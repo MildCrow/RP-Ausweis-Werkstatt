@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RP Ausweis-Werkstatt</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>RP Ausweis-Werkstatt</h1>
+    <p class="lede">Personalausweis und Führerschein für dein Roleplay in Notruf Hamburg. Trag die Daten ein, die Karten entstehen live.</p>
+    <div class="notice"><b>Spielkarte</b><span>Nur für Roblox-Roleplay. Die Karten sind erfunden, tragen kein amtliches Wappen und gelten nirgends außerhalb des Spiels.</span></div>
+  </header>
+
+  <div class="layout">
+    <form class="panel" id="form" autocomplete="off" onsubmit="return false">
+      <fieldset>
+        <legend>Person</legend>
+        <div class="row">
+          <label class="f" for="vorname">Vorname<input type="text" id="vorname" maxlength="28"></label>
+          <label class="f" for="nachname">Nachname<input type="text" id="nachname" maxlength="28"></label>
+        </div>
+        <div class="row">
+          <label class="f" for="geburtsdatum">Geburtsdatum<input type="date" id="geburtsdatum"></label>
+          <label class="f" for="geburtsort">Geburtsort<input type="text" id="geburtsort" maxlength="26"></label>
+        </div>
+        <div class="row">
+          <label class="f" for="geschlecht">Geschlecht
+            <select id="geschlecht"><option value="M">M</option><option value="W">W</option><option value="D">D</option></select>
+          </label>
+          <label class="f" for="nationalitaet">Staatsangehörigkeit<input type="text" id="nationalitaet" maxlength="22"></label>
+        </div>
+        <div class="row">
+          <label class="f" for="groesse">Größe (cm)<input type="number" id="groesse" min="100" max="230"></label>
+          <label class="f" for="augen">Augenfarbe
+            <select id="augen"><option>Blau</option><option>Braun</option><option>Grün</option><option>Grau</option><option>Haselnuss</option></select>
+          </label>
+        </div>
+        <label class="f" for="roblox">Roblox-Name (steht auf den Karten)<input type="text" id="roblox" maxlength="24" placeholder="DeinName123"></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Wohnort</legend>
+        <label class="f" for="strasse">Straße und Hausnummer<input type="text" id="strasse" maxlength="34"></label>
+        <label class="f" for="ort">PLZ und Ort<input type="text" id="ort" maxlength="30"></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Ausstellung</legend>
+        <div class="row">
+          <label class="f" for="ausgestellt">Ausgestellt am<input type="date" id="ausgestellt"></label>
+          <label class="f" for="behoerde">Behörde<input type="text" id="behoerde" maxlength="30"></label>
+        </div>
+        <p class="hint">Gültig bis wird berechnet: Ausweis 10 Jahre, Führerschein 15 Jahre.</p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Führerscheinklassen</legend>
+        <div class="chips" id="klassen"></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Foto</legend>
+        <div class="photo">
+          <label class="filebtn" for="foto">Bild wählen<input type="file" id="foto" accept="image/*"></label>
+          <button type="button" id="fotoWeg">Entfernen</button>
+        </div>
+        <p class="hint">Am besten ein Screenshot deiner Roblox-Figur im Hochformat.</p>
+      </fieldset>
+
+      <div class="btns">
+        <button type="button" class="primary" id="zufall">Zufällige Person</button>
+        <button type="button" id="nummern">Neue Nummern</button>
+        <button type="button" id="reset">Zurücksetzen</button>
+      </div>
+    </form>
+
+    <section class="cards" aria-label="Vorschau">
+      <figure>
+        <figcaption><span>Personalausweis, Vorderseite</span><button type="button" data-copy="0">Bild kopieren</button></figcaption>
+        <img class="cardimg" id="img0" alt="Vorschau Personalausweis Vorderseite">
+      </figure>
+      <figure>
+        <figcaption><span>Personalausweis, Rückseite</span><button type="button" data-copy="1">Bild kopieren</button></figcaption>
+        <img class="cardimg" id="img1" alt="Vorschau Personalausweis Rückseite">
+      </figure>
+      <figure>
+        <figcaption><span>Führerschein</span><button type="button" data-copy="2">Bild kopieren</button></figcaption>
+        <img class="cardimg" id="img2" alt="Vorschau Führerschein">
+      </figure>
+      <p class="tip" style="grid-column: 1 / -1">Speichern: Rechtsklick auf die Karte und „Bild speichern unter“. Am Handy die Karte gedrückt halten.</p>
+    </section>
+  </div>
+</div>
+<div id="toast" role="status" hidden></div>
+
+<script src="script.js"></script>
+</body>
+</html>
